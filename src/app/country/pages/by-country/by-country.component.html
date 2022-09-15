@@ -2,16 +2,42 @@
 <hr/>
 
 <div class="row">
-
     <div class="col">
         <app-country-input 
         placeholder="Search by country"
         (onEnter)="search( $event )"
-        (onDebounce)="suggestions( $event )"        ></app-country-input>
+        (onDebounce)="suggestions( $event )"
+        >
+    </app-country-input>
     </div>
 </div>
-
 <hr/>
+
+<ul 
+    *ngIf="showSuggestions"
+    class="list-group">
+    <li 
+        *ngFor="let country of suggestedCountries"
+        class="list-group-item list-group-item-action">
+        <a 
+            class="nav-link"
+            [routerLink]="['country/', country.cca3]"
+            >
+            {{country.name.common}}
+        </a>
+        
+    </li>
+    <li 
+        class="list-group-item list-group-item-action">
+        <a 
+            (click)="searchSuggestions(term)"
+            class="nav-link"
+            >
+            Search "{{term}}"
+        </a>
+        
+    </li>
+</ul>
 
 <div *ngIf="isError" class="alert alert-danger">
     No country found with the search term: <strong> {{term}} </strong>
