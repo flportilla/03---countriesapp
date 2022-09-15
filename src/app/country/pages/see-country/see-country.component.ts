@@ -30,17 +30,6 @@ export class SeeCountryComponent implements OnInit {
         this.country = country
         
       })
-
-    // this.activatedRoute.params
-    //   .subscribe(({id}) => {
-    //     this.CountryService.seeMore(id)
-    //       .subscribe(country => {
-    //         this.country = country
-
-    //         console.log(this.country)
-    //       })
-    //   })
-
   }
 
 }
