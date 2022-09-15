@@ -1,0 +1,24 @@
+<h2>By country</h2>
+<hr/>
+
+<div class="row">
+
+    <div class="col">
+        <app-country-input 
+        placeholder="Search by country"
+        (onEnter)="search( $event )"
+        (onDebounce)="suggestions( $event )"        ></app-country-input>
+    </div>
+</div>
+
+<hr/>
+
+<div *ngIf="isError" class="alert alert-danger">
+    No country found with the search term: <strong> {{term}} </strong>
+</div>
+
+<div class="row" *ngIf="countries.length > 0">
+    <div class="col">
+        <app-country-table [countries]="countries"></app-country-table>
+    </div>
+</div>
